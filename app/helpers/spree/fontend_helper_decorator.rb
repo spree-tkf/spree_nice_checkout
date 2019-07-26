@@ -28,7 +28,7 @@ Spree::FrontendHelper.class_eval do
           content_tag('span', content_tag('a', text), class: css_classes.join(' '))
         end
       end
-        content_tag('div', raw("<span class='cart-progress completed'><a href='#{ spree.cart_path }'>#{Spree.t(:cart)}</a></span>" + (items.join("\n"))), class: 'steps-container text-center', id: "checkout-step-#{@order.state}")
+        content_tag('div', raw("<span class='cart-progress completed'><a href='#{ spree.cart_path }'>#{Spree.t(:cart)}</a></span>" + (items.join("\n")) + "<span class='cart-progress paypal'><a>#{Spree.t(:payment)}</a></span>"), class: 'steps-container text-center', id: "checkout-step-#{@order.state}")
     end
 
 end

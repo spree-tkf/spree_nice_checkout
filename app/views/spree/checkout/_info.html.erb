@@ -5,7 +5,7 @@
       <%= Spree.t(:contact) %>
     </div>
     <div class="info">
-      <%= @order.email%>
+      <%= @order.name %>, <%= @order.email %>
     </div>
     <div class="link text-right">
       <%= link_to Spree.t(:change), spree.checkout_state_path('address') %>
@@ -15,7 +15,19 @@
       <%= Spree.t(:ship_to) %>
     </div>
     <div class="info ">
-      <%= @order.shipping_address.address1 %>, <%= @order.shipping_address.city %>, <%= @order.shipping_address.zipcode %>, <%= @order.shipping_address.country %>
+      <%= @order.shipping_address.address1 + "," %>
+      <% if @order.shipping_address.address2.present? %>
+        <%= @order.shipping_address.address2 %>,
+      <% end %>
+      <% if @order.shipping_address.company.present? %>
+        <%= @order.shipping_address.company %>,
+      <% end %>
+        <%= @order.shipping_address.city %>,
+        <% if @order.shipping_address.state.present? %>
+          <%= @order.shipping_address.state %>,
+        <% end %>
+        <%= @order.shipping_address.zipcode %>,
+        <%= @order.shipping_address.country %>
     </div>
     <div class="link text-right">
       <%= link_to Spree.t(:change), spree.checkout_state_path('address') %>
@@ -29,7 +41,7 @@
       <%= Spree.t(:contact) %>
     </div>
     <div class="info">
-      <%= @order.email%>
+      <%= @order.name %>, <%= @order.email %>
     </div>
     <div class="link text-right">
       <%= link_to Spree.t(:change), spree.checkout_state_path('address') %>
@@ -39,7 +51,19 @@
       <%= Spree.t(:ship_to) %>
     </div>
     <div class="info ">
-      <%= @order.billing_address.address1 %>, <%= @order.billing_address.city %>, <%= @order.billing_address.zipcode %>, <%= @order.billing_address.country %>
+      <%= @order.shipping_address.address1 + "," %>
+      <% if @order.shipping_address.address2.present? %>
+        <%= @order.shipping_address.address2 %>,
+      <% end %>
+      <% if @order.shipping_address.company.present? %>
+        <%= @order.shipping_address.company %>,
+      <% end %>
+        <%= @order.shipping_address.city %>,
+        <% if @order.shipping_address.state.present? %>
+          <%= @order.shipping_address.state %>,
+        <% end %>
+        <%= @order.shipping_address.zipcode %>,
+        <%= @order.shipping_address.country %>
     </div>
     <div class="link text-right">
       <%= link_to Spree.t(:change), spree.checkout_state_path('address') %>

@@ -28,13 +28,13 @@
                 </div>
               <% end %>
             </div>
-            <div class="text-left">
+            <div class="text-left" style="padding-left: 5px; padding-top: 5px;">
               <strong><%= item.name %></strong>
               <%= "<br />".html_safe + "(" + item.variant.options_text + ")" unless item.variant.option_values.empty? %>
               <br>
               <%= item.single_money %>
             </div>
-            <div data-hook="order_item_total" class="text-right"><%= item.display_amount %></div>
+            <div data-hook="order_item_total" class="text-right" style="padding-top: 5px;"><%= item.display_amount %></div>
         <% end %>
     </div>
 
@@ -108,7 +108,7 @@
           <strong>
             <span class= "order-total" id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>"><%= order.display_total.to_html %></span>
           </strong><br />
-          <span class="total-tax"><%= Spree.t(:currency)%>: <%= current_currency %></span>
+          <span class="total-tax"><a href='#curency-switcher' rel='modal:open'><%= Spree.t(:currency)%>: <%= current_currency %></a></span>
         </div>
     </div>
   </div>

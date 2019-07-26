@@ -54,6 +54,20 @@ dd {
   margin: 0;
 }
 
+#powered_by_pp{
+  margin: 0;
+}
+div#paypal_express_checkout p#powered_by_pp {
+  font-size: 15px;
+  color: grey;
+  font-style: italic;
+  font-weight: 400;
+}
+#pay_button{
+  color:white;
+  width:100%;
+}
+
   div.alert{
     position: fixed;
     top: 0;
@@ -190,7 +204,7 @@ dd {
     margin: 0 10px 0 0;
     }
 
-    span.cart-progress.last, span.cart-progress.last:after, span.cart-progress.pay:after {
+    span.cart-progress.last, span.cart-progress.last:after, span.cart-progress.paypal:after {
         display:none;
         margin: 0;
     }
@@ -331,7 +345,7 @@ dd {
           position: relative;
           border:1px solid $color-border;
           padding: 3px;
-          margin: 5px 0;
+          margin: 10px 0;
           }
         }
 
@@ -631,9 +645,14 @@ dd {
     }
 
 //####### CHECKBOX STYLES
+div.checkbox {
+  display: grid;
+  margin: 10px 0;
+}
     .checkbox input[type="checkbox"] {
         opacity: 0;
         width:0;
+        height: auto;
     }
 
     .checkbox label {
@@ -849,7 +868,7 @@ dd {
             }
 
             .badger-accordion__panel {
-
+              max-height: 10000px;
               overflow: hidden;
               // scss-lint:disable ImportantRule
               &.-ba-is-hidden {

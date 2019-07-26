@@ -7,7 +7,7 @@
 
 <div id="billing">
   <%= form.fields_for :bill_address do |bill_form| %>
-    <h4><%= Spree.t(:billing_address) %></h4>
+    <h3><%= Spree.t(:billing_address) %></h3>
     <% if try_spree_current_user %>
       <div style="display:none;" data-hook="save_user_address">
         <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
@@ -28,7 +28,7 @@
       <%= Spree.t(:use_billing_address) %>
     <% end %>
   </div>
-  <h4 class="inner" style="display: none; margin-top:50px;"><%= Spree.t(:shipping_address) %></h4>
+  <h3 class="inner" style="display: none; margin-top:50px;"><%= Spree.t(:shipping_address) %></h3>
     <%= render partial: 'spree/address/form', locals: { form: ship_form, address_type: 'shipping', address: @order.ship_address } %>
   <% end %>
 </div>

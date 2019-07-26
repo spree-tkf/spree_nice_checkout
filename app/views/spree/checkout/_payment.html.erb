@@ -1,5 +1,4 @@
 <div id="payment" data-hook='payment_wrapper'>
-
   <div data-hook="checkout_payment_step">
     <% if @payment_sources.present? %>
       <div class="card_options">
@@ -34,7 +33,7 @@
     <% end %>
 
   <%= render partial: 'spree/checkout/payment/storecredit' %>
- <div id="payment-options" class="spree-well">
+ <div hidden style="display:none;" id="payment-options" class="spree-well">
   <div>
     <h3><%= Spree.t(:payment) %></h3>
     <ul class="list-group text-left" id="payment-method-fields" data-hook>
@@ -48,15 +47,7 @@
   </div>
 </div>
 
-    <ul class="nav" id="payment-methods" data-hook>
-      <% @order.available_payment_methods.each do |method| %>
-        <li id="payment_method_<%= method.id %>" class="<%= 'last' if method == @order.available_payment_methods.last %>">
-          <fieldset>
-            <%= render partial: "spree/checkout/payment/#{method.method_type}", locals: { payment_method: method } %>
-          </fieldset>
-        </li>
-      <% end %>
-    </ul>
+
   </div>
 </div>
 
@@ -65,7 +56,20 @@
       <span class="go-back"><%= link_to Spree.t(:return_to_delivery) , spree.checkout_state_path('delivery') %></span>
    </div>
    <div class="continue">
-     <%= submit_tag Spree.t(:purchase), class: 'btn btn-success btn-block checkout-button' %>
-     <script>Spree.disableSaveOnClick();</script>
+
+     <ul class="nav" id="payment-methods" data-hook>
+       <% @order.available_payment_methods.each do |method| %>
+         <li id="payment_method_<%= method.id %>" class="<%= 'last' if method == @order.available_payment_methods.last %>">
+           <fieldset>
+             <%= render partial: "spree/checkout/payment/#{method.method_type}", locals: { payment_method: method } %>
+           </fieldset>
+         </li>
+       <% end %>
+     </ul>
+    <div hidden style="display:none;">
+      <%= submit_tag Spree.t(:purchase), class: 'btn btn-success btn-block checkout-button' %>
+      <script>Spree.disableSaveOnClick();</script>
+    </div>
+
    </div>
 </div>
