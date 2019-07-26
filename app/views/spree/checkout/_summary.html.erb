@@ -44,7 +44,7 @@
           <div class="form-group has-float-label">
             <%= form.text_field :coupon_code, placeholder: "#{Spree.t(:coupon_code)}", class: 'form-control', id: 'coupon_box' %>
             <%= form.label Spree.t(:coupon_code) %>
-            <%= button_tag Spree.t(:coupon_code_apply), class: 'coupon_button btn btn-default' %>
+            <%= button_tag Spree.t(:coupon_code_apply).html_safe, class: 'coupon_button btn btn-default' %>
           </div>
       </div>
       <% end %>

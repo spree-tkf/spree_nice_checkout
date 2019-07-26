@@ -823,6 +823,9 @@ div.checkbox {
             .medium_down_hide {
              display: none;
             }
+            .medium_down_show_inline{
+              display: inline-block !important;
+            }
 
             dt#accordion_show_hide{
               display: grid;
