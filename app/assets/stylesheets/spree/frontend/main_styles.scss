@@ -62,7 +62,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 0;
+  margin: 10px 0;
 }
 
 #powered_by_pp{
@@ -849,17 +849,15 @@ div.checkbox {
               padding: 15px;
             }
 
-            div.inner-section-right {
+            .inner-section-right, .inner-section-left  {
               max-width: 566px;
               margin:auto;
               padding-left: 3px;
               padding-right: 3px;
             }
 
-            div.inner-section-right {
-              max-width: 566px;
-              padding-left: 3px;
-              padding-right: 3px;
+            span.total-tax{
+              font-size: 0.75em;
             }
 
             div#checkout-header {
