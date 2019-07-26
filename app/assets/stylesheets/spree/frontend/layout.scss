@@ -16,7 +16,7 @@ body#checkout-page {
       div#checkout-header {
         grid-area: head;
       }
-      div#checkout-main {
+      div#checkout {
         grid-area: main;
       }
       div#checkout-summary {
@@ -40,7 +40,7 @@ body#checkout-page {
               height: auto;
             }
 
-            div#checkout-main {
+            div#checkout {
               // margin-top:100px;
               padding-top:0;
               grid-area: main;
