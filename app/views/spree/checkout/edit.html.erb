@@ -52,7 +52,7 @@
           <span class="text-right grey"><span class="small_hide"><%= Spree.t(:already_have_an_acount) %> </span><a href='#login-modal' rel='modal:open'><%= Spree.t(:login) %></span></a>
         </div>
         <div class="has-float-label">
-          <%= form.email_field :email, placeholder: "#{Spree.t(:email)}", class: 'form-control', required: true %>
+          <%= form.email_field :email, placeholder: "#{Spree.t(:email)}", class: 'form-control', id: 'email', required: true %>
           <%= form.label :email %>
         </div>
       <% end %>
