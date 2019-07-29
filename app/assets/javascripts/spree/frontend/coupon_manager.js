@@ -36,12 +36,13 @@ CouponManager.prototype.sendRequest = function () {
     }
   }).done(function () {
     this.couponCodeField.val('')
-    this.couponCodeField.addClass('alert-success animated flash')
+    this.couponCodeField.next().addClass('animated heartBeat')
+    this.couponCodeField.addClass('alert-success animated heartBeat')
     this.couponApplied = true
 
     setTimeout(function(){
-        $('.form-control').removeClass('alert-success animated flash');
-    }, 3000);
+        $('.animated').removeClass('alert-success animated heartBeat');
+    }, 2000);
 
     return $.ajax({
       url: Spree.pathFor('summary_adjustments')
@@ -57,12 +58,13 @@ CouponManager.prototype.sendRequest = function () {
 
   }.bind(this)).fail(function (xhr) {
     var handler = xhr.responseJSON
-    this.couponCodeField.val('')
+    this.couponCodeField.next().addClass('animated shake')
     this.couponCodeField.addClass('alert-error animated shake')
 
     setTimeout(function(){
-        $('.form-control').removeClass('alert-error animated shake');
-    }, 1000);
+
+        $('.animated').removeClass('alert-error animated shake');
+    }, 2000);
 
   }.bind(this))
 }
