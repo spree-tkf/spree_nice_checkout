@@ -36,12 +36,12 @@ CouponManager.prototype.sendRequest = function () {
     }
   }).done(function () {
     this.couponCodeField.val('')
-    this.couponCodeField.next().addClass('animated heartBeat')
-    this.couponCodeField.addClass('alert-success animated heartBeat')
+    this.couponCodeField.next().addClass('animated pulse')
+    this.couponCodeField.addClass('alert-success animated pulse')
     this.couponApplied = true
 
     setTimeout(function(){
-        $('.animated').removeClass('alert-success animated heartBeat');
+        $('.animated').removeClass('alert-success animated pulse');
     }, 2000);
 
     return $.ajax({
