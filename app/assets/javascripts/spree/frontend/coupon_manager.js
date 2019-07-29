@@ -56,6 +56,12 @@ CouponManager.prototype.sendRequest = function () {
       return $('.order-total').html(data)
     })
 
+    return $.ajax({
+      url: Spree.pathFor('summary_adjustments')
+    }).done(function (data) {
+      return $('.tax-amount').html(data)
+    })
+
   }.bind(this)).fail(function (xhr) {
     var handler = xhr.responseJSON
     this.couponCodeField.next().addClass('animated shake')
