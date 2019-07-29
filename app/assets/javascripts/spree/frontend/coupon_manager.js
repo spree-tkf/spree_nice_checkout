@@ -36,14 +36,33 @@ CouponManager.prototype.sendRequest = function () {
     }
   }).done(function () {
     this.couponCodeField.val('')
-    this.couponCodeField.addClass('alert-success')
+    this.couponCodeField.addClass('alert-success animated flash')
     this.couponApplied = true
-    window.location.reload(true);
+
+    setTimeout(function(){
+        $('.form-control').removeClass('alert-success animated flash');
+    }, 3000);
+
+    return $.ajax({
+      url: Spree.pathFor('summary_adjustments')
+    }).done(function (data) {
+      return $('.summary_adjustments').html(data)
+    })
+
+    return $.ajax({
+      url: Spree.pathFor('summary_adjustments')
+    }).done(function (data) {
+      return $('.order-total').html(data)
+    })
 
   }.bind(this)).fail(function (xhr) {
     var handler = xhr.responseJSON
     this.couponCodeField.val('')
-    this.couponCodeField.addClass('alert-error')
-    this.couponStatus.html(handler['error'])
+    this.couponCodeField.addClass('alert-error animated shake')
+
+    setTimeout(function(){
+        $('.form-control').removeClass('alert-error animated shake');
+    }, 1000);
+
   }.bind(this))
 }

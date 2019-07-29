@@ -1,5 +1,7 @@
 en:
   spree:
+    adjustments_deleted: Coupon removed
+    remove_promotion: Remove promotion
     continue_to_delivery: Continue to delivery
     continue_to_summary: Continue to summary
     return_to_cart: Return to cart
