@@ -24,6 +24,10 @@ module SpreeNiceCheckout
         end
       end
 
+      def geocoder_install
+        run 'bundle exec rails generate geocoder:config'
+      end
+
     end
   end
 end
