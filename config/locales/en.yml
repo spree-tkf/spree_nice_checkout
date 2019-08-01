@@ -11,7 +11,7 @@ en:
     inclides: includes
     accepts_marketing_emails: Keep me up to date <span class='small_hide'>on news & exclusive offers<span>
     use_billing_address: Use billing address for delivery
-    coupon_code: Enter a discount code
+    coupon_code: Discount code
     coupon_code_apply: <span class="medium_down_hide">Apply</span> <i class="hide fas fa-arrow-right medium_down_show_inline"></i>
     change: Change
     contact: Contact
