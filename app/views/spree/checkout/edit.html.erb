@@ -33,7 +33,7 @@
               <% else %>
                 <div class="contact_login">
                   <h4 class="_fr2"><%= Spree.t(:contact_information) %></h4>
-                  <span class="text-right grey" data-custom-open="modal-1"><span class="small_hide"><%= Spree.t(:already_have_an_acount) %> </span><span class="link_color"><%= Spree.t(:login) %></span></span>
+                  <span class="text-right grey" data-custom-open="modal-1"><span class="small_hide"><%= Spree.t(:already_have_an_acount) %> </span> <a href='#login-modal' rel='modal:open'><%= Spree.t(:login) %></a></span>
                 </div>
                 <div class="has-float-label">
                   <%= form.email_field :email, placeholder: "#{Spree.t(:email)}", class: 'form-control', id: 'email', required: true %>
@@ -48,9 +48,9 @@
           <% end %>
       </div>
       <div id="checkout-footer">
-        <a aria-haspopup="dialog" data-modal="policy-992873" data-title-text="Refund policy" data-close-text="Close" data-iframe="true" href="/2676031/policies/992873.html">Refund policy</a>
-        <a aria-haspopup="dialog" data-modal="policy-992875" data-title-text="Privacy policy" data-close-text="Close" data-iframe="true" href="/2676031/policies/992875.html">Privacy policy</a>
-        <a aria-haspopup="dialog" data-modal="policy-992877" data-title-text="Terms of service" data-close-text="Close" data-iframe="true" href="/2676031/policies/992877.html">Terms of service</a>
+        <a href='#returns-modal' rel='modal:open'>Refund policy</a>
+        <a href='#privacy-modal' rel='modal:open'>Privacy policy</a>
+        <a href='#terms-modal' rel='modal:open'>Terms of service</a>
       </div>
 
     </div>
@@ -92,3 +92,6 @@
 <% if @order.state == 'address' %>
   <%= render partial: 'spree/checkout/login' %>
 <% end %>
+<%= render partial: 'spree/checkout/returns' %>
+<%= render partial: 'spree/checkout/privacy' %>
+<%= render partial: 'spree/checkout/terms' %>
