@@ -2,10 +2,10 @@
 
 <div id="checkout-header">
   <div class="inner-section-left">
-    <div style='max-width:140px; margin: 0px auto 15px; text-align:center;'>
+    <div style='max-width:140px; margin: 0px auto 5px; text-align:center;'>
       <%= logo %>
     </div>
-    <div id="checkout-progress" class="medium_down_hide" data-hook="checkout_header">
+    <div id="checkout-progress" data-hook="checkout_header">
       <%= checkout_progress %>
     </div>
   </div>
@@ -19,55 +19,40 @@
 
 <div id="checkout">
   <div class="inner-section-left">
+
     <%= render partial: 'spree/checkout/info' %>
-    <% if @order.state == 'payment' %>
-    <div id="payment_additional_discount_box" style="margin-bottom: 20px;">
-      <h3><%= Spree.t(:coupon_code) %></h3>
-      <% if Spree::Frontend::Config[:coupon_codes_enabled] %>
-        <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "coupon_code_pay" }, remote: true do |form| %>
-        <div id="discount-apply_pay">
-            <div class="form-group has-float-label">
-              <%= form.text_field :coupon_code, placeholder: "#{Spree.t(:coupon_code)}", class: 'form-control', id: 'coupon_box_pay' %>
-              <%= form.label Spree.t(:coupon_code) %>
-              <%= button_tag Spree.t(:coupon_code_apply).html_safe, class: 'coupon_button btn btn-default' %>
-            </div>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-    <% end %>
-<div class="grid">
-      <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
-      <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" } do |form| %>
+      <div class="grid">
+          <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
+          <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" } do |form| %>
+            <% if @order.state == 'address' || !@order.email? %>
+              <% if spree_current_user %>
+              <div>
+                <h4><%= Spree.t(:contact_information) %></h4>
+                <span class="grey"><%= @order.name %> (<%= @order.email%>) <%= link_to Spree.t(:logout), spree.logout_path %></span>
+              </div>
+              <% else %>
+                <div class="contact_login">
+                  <h4 class="_fr2"><%= Spree.t(:contact_information) %></h4>
+                  <span class="text-right grey" data-custom-open="modal-1"><span class="small_hide"><%= Spree.t(:already_have_an_acount) %> </span><span class="link_color"><%= Spree.t(:login) %></span></span>
+                </div>
+                <div class="has-float-label">
+                  <%= form.email_field :email, placeholder: "#{Spree.t(:email)}", class: 'form-control', id: 'email', required: true %>
+                  <%= form.label :email %>
+                  <span id="result"></span>
+                </div>
+              <% end %>
+          <% end %>
 
-    <% if @order.state == 'address' || !@order.email? %>
-      <% if spree_current_user %>
-      <div>
-        <h2><%= Spree.t(:contact_information) %></h2>
-        <div class="grey" style="margin-bottom:6px;"><%= @order.name %> (<%= @order.email%>) <%= link_to Spree.t(:logout), spree.logout_path %></div>
+          <%= form.hidden_field :state_lock_version %>
+            <%= render @order.state, form: form %>
+          <% end %>
       </div>
-      <% else %>
-        <div class="contact_login">
-          <h3 class="_fr2"><%= Spree.t(:contact_information) %></h3>
-          <span class="text-right grey"><span class="small_hide"><%= Spree.t(:already_have_an_acount) %> </span><a href='#login-modal' rel='modal:open'><%= Spree.t(:login) %></span></a>
-        </div>
-        <div class="has-float-label">
-          <%= form.email_field :email, placeholder: "#{Spree.t(:email)}", class: 'form-control', id: 'email', required: true %>
-          <%= form.label :email %>
-          <span id="result"></span>
-        </div>
-      <% end %>
-    <% end %>
+      <div id="checkout-footer">
+        <a aria-haspopup="dialog" data-modal="policy-992873" data-title-text="Refund policy" data-close-text="Close" data-iframe="true" href="/2676031/policies/992873.html">Refund policy</a>
+        <a aria-haspopup="dialog" data-modal="policy-992875" data-title-text="Privacy policy" data-close-text="Close" data-iframe="true" href="/2676031/policies/992875.html">Privacy policy</a>
+        <a aria-haspopup="dialog" data-modal="policy-992877" data-title-text="Terms of service" data-close-text="Close" data-iframe="true" href="/2676031/policies/992877.html">Terms of service</a>
+      </div>
 
-    <%= form.hidden_field :state_lock_version %>
-      <%= render @order.state, form: form %>
-    <% end %>
-</div>
-    <div id="checkout-footer">
-        <a href='#returns-modal' rel='modal:open'>Returns policy</a>
-        <a href='#privacy-modal' rel='modal:open'>Privacy policy</a>
-        <a href='#terms-modal' rel='modal:open'>Terms of service</a>
-      </div>
     </div>
 </div>
 
@@ -77,40 +62,33 @@
   new BadgerAccordion('.js-badger-accordion', {
   });
 
-  $(function() {
+<% if @order.state == "address"%>
+    <% unless spree_current_user  %>
+      $(function() {
+        function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+        }
 
-    setTimeout(function(){
-      $('.alert').fadeOut(800);
-    }, 4000);
+        function validate() {
+          var $result = $("#result");
+          var email = $("#email").val();
+          $result.text("");
 
-      <% unless spree_current_user %>
-          function validateEmail(email) {
-                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(email);
-              }
+          if (validateEmail(email)) {
+          } else {
+            $result.text(email + " is not a valid email address");
+            $result.css("color", "red");
+            return false;
+          }
 
-              function validate() {
-                var $result = $("#result");
-                var email = $("#email").val();
-                $result.text("");
-
-                if (validateEmail(email)) {
-                } else {
-                  $result.text(email + " is not a valid email address");
-                  $result.css("color", "red");
-                  return false;
-                }
-
-              }
-              $("#address-form-button").on("click", validate);
-      <% end %>
-
-  });
+        }
+        $("#address-form-button").on("click", validate);
+      });
+    <% end %>
+<% end %>
 </script>
 
 <% if @order.state == 'address' %>
   <%= render partial: 'spree/checkout/login' %>
 <% end %>
-<%= render partial: 'spree/checkout/returns' %>
-<%= render partial: 'spree/checkout/privacy' %>
-<%= render partial: 'spree/checkout/terms' %>

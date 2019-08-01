@@ -58,6 +58,7 @@ dd {
   margin: 0;
 }
 
+hr { border-color: $color-border;}
 
 /* line 11, /Users/matthewkennedy/Sites/spree-tkf/tkf/vendor/assets/stylesheets/spree/frontend/custom.scss */
 h1,
@@ -67,6 +68,16 @@ h4,
 h5,
 h6 {
   margin: 10px 0;
+}
+
+.summary-heading-2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.summary-heading-1 {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 #powered_by_pp{
@@ -891,8 +902,6 @@ div.checkbox {
                   max-height: 0 !important;
                   visibility: hidden;
               }
-              // transition is added via `badger-accordion--initalised` to stop animation on initalition
-              .badger-accordion--initalised & { transition: max-height ease-in-out 0.2s; }
             }
 
 
@@ -952,17 +961,13 @@ div.checkbox {
             }
 
 
-
             .badger-accordion--initialized .badger-accordion__panel {
-              transition: all ease-in-out 0.2s;
+              transition: all ease-in-out 0.3s;
             }
 
             .badger-accordion__trigger-icon {
-                transition: all ease-in-out .2s;
+                transition: all ease-in-out .3s;
             }
-
-
-
 
             div.js-badger-accordion-header .summary_adjustments div#subtotal-line,
             div.js-badger-accordion-header .summary_adjustments .line-items,
@@ -984,9 +989,6 @@ div.checkbox {
               font-weight:bold;
 
             }
-
-
-
 
 
       }

@@ -13,6 +13,7 @@
     </div>
   </div>
 </dt>
+
 <dd class="badger-accordion__panel js-badger-accordion-panel -ba-is-hidden">
   <div id="checkout-summary-inner" class="js-badger-accordion-panel-inner inner-section-right">
     <div id="cart-line-items">
@@ -28,28 +29,18 @@
                 </div>
               <% end %>
             </div>
-            <div class="text-left" style="padding-left: 5px; padding-top: 5px;">
+            <div class="text-left">
               <strong><%= item.name %></strong>
               <%= "<br />".html_safe + "(" + item.variant.options_text + ")" unless item.variant.option_values.empty? %>
               <br>
               <%= item.single_money %>
             </div>
-            <div data-hook="order_item_total" class="text-right" style="padding-top: 5px;"><%= item.display_amount %></div>
+            <div data-hook="order_item_total" class="text-right"><%= item.display_amount %></div>
         <% end %>
     </div>
-
-    <% if Spree::Frontend::Config[:coupon_codes_enabled] %>
-      <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "coupon_code" }, remote: true do |form| %>
-      <div class="grid" id="discount-apply">
-          <div class="form-group has-float-label">
-            <%= form.text_field :coupon_code, placeholder: "#{Spree.t(:coupon_code)}", class: 'form-control', id: 'coupon_box' %>
-            <%= form.label Spree.t(:coupon_code) %>
-            <%= button_tag Spree.t(:coupon_code_apply).html_safe, class: 'coupon_button btn btn-default' %>
-          </div>
-      </div>
-      <% end %>
-    <% end %>
-
-    <div class="summary_adjustments"><%= render partial: "summary_adjustments", locals: { order: order }  %></div>
+    <hr />
+    <div class="summary_adjustments">
+      <%= render partial: "summary_adjustments", locals: { order: order }  %>
+    </div>
   </div>
 </dd>

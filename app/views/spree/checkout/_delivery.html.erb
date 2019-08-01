@@ -3,7 +3,7 @@
    <div id="methods">
      <%= form.fields_for :shipments do |ship_form| %>
        <div style="margin-bottom:25px;" class="shipment">
-         <h3 class="stock-shipping-method-title"><%= Spree.t(:shipping_method) %></h3>
+         <h4 class="stock-shipping-method-title"><%= Spree.t(:shipping_method) %></h4>
          <ul id="shipping_methods" class="list-group shipping-methods text-left">
            <% ship_form.object.shipping_rates.each do |rate| %>
              <li class="list-group-item shipping-method">
@@ -17,9 +17,9 @@
 
      <% if @differentiator.try(:missing?) %>
        <div class="shipment unshippable">
-         <h3 class="stock-location" data-hook="stock-location">
+         <h4 class="stock-location" data-hook="stock-location">
            <%= Spree.t(:unshippable_items) %>
-         </h3>
+         </h4>
          <table class="table stock-contents" data-hook="stock-missing">
            <colgroup>
              <col style="width: 10%;" />
@@ -49,7 +49,7 @@
    </div>
    <% if Spree::Config[:shipping_instructions] %>
      <div id="minstrs" data-hook>
-       <h3><%= Spree.t(:shipping_instructions) %></h3>
+       <h4><%= Spree.t(:shipping_instructions) %></h4>
        <%= form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %>
      </div>
    <% end %>
@@ -61,69 +61,8 @@
       <span class="go-back"><%= link_to Spree.t(:return_to_address), spree.checkout_state_path('address') %></span>
    </div>
    <div class="continue">
-      <%= submit_tag Spree.t(:continue_to_summary), class: 'btn btn-success btn-block checkout-button' %>
+      <%= submit_tag Spree.t(:continue_to_payment), class: 'btn btn-success btn-block checkout-button' %>
    </div>
 </div>
 
-<script>
-  new BadgerAccordion('.js-badger-accordion', {
-  });
-</script>
-<% unless @order.shipment_adjustments.nonzero.promotion.exists? %>
-    <script>
-        function ShippingTotalManager (input1) {
-          this.input = input1
-          this.shippingMethods = this.input.shippingMethods
-          this.shipmentTotal = this.input.shipmentTotal
-          this.orderTotal = this.input.orderTotal
-          this.formatOptions = {
-            symbol: this.shipmentTotal.data('currency'),
-            decimal: this.shipmentTotal.attr('decimal-mark'),
-            thousand: this.shipmentTotal.attr('thousands-separator'),
-            precision: 2
-          }
-        }
-
-        ShippingTotalManager.prototype.calculateShipmentTotal = function () {
-          var checked = $(this.shippingMethods).filter(':checked')
-          this.sum = 0
-          $.each(checked, function (idx, shippingMethod) {
-            this.sum += this.parseCurrencyToFloat($(shippingMethod).data('cost'))
-          }.bind(this))
-          return this.readjustSummarySection(this.parseCurrencyToFloat(this.orderTotal.html()), this.sum, this.parseCurrencyToFloat(this.shipmentTotal.html()))
-        }
-
-        ShippingTotalManager.prototype.parseCurrencyToFloat = function (input) {
-          return accounting.unformat(input, this.formatOptions.decimal)
-        }
-
-        ShippingTotalManager.prototype.readjustSummarySection = function (orderTotal, newShipmentTotal, oldShipmentTotal) {
-          var newOrderTotal = orderTotal + (newShipmentTotal - oldShipmentTotal)
-          this.shipmentTotal.html(accounting.formatMoney(newShipmentTotal, this.formatOptions))
-          return this.orderTotal.html(accounting.formatMoney(newOrderTotal, this.formatOptions))
-        }
-
-        ShippingTotalManager.prototype.bindEvent = function () {
-          this.shippingMethods.change(function () {
-            return this.calculateShipmentTotal()
-          }.bind(this))
-        }
-
-        Spree.ready(function ($) {
-          var input = {
-            orderTotal: $('.order-total'),
-            shipmentTotal: $('[data-hook="shipping-total"]'),
-            shippingMethods: $('input[data-behavior="shipping-method-selector"]')
-          }
-          return new ShippingTotalManager(input).bindEvent()
-        })
-
-        var activeItem = $('#shipping_methods').find(':checked')
-        activeItem.closest('li').addClass('active_shipping_method')
-
-        $("#shipping_methods li label").on('click', function(){
-          $('li').removeClass("active_shipping_method");
-          $(this).closest('li').toggleClass("active_shipping_method");
-        });
-  </script>
-<% end %>
+  <%= javascript_include_tag 'spree/frontend/checkout/shipment' %>
