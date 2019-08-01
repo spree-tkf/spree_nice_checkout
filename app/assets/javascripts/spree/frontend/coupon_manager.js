@@ -36,40 +36,15 @@ CouponManager.prototype.sendRequest = function () {
     }
   }).done(function () {
     this.couponCodeField.val('')
-    this.couponCodeField.next().addClass('animated pulse')
-    this.couponCodeField.addClass('alert-success animated pulse')
+    this.couponStatus.addClass('alert-success').html(Spree.translations.coupon_code_applied)
     this.couponApplied = true
-
-    setTimeout(function(){
-        $('.animated').removeClass('alert-success animated pulse');
-    }, 2000);
-
-    return $.ajax({
-      url: Spree.pathFor('summary_adjustments')
-    }).done(function (data) {
-      return $('.summary_adjustments').html(data)
-    })
-
-    return $.ajax({
-      url: Spree.pathFor('summary_adjustments')
-    }).done(function (data) {
-      return $('.order-total').html(data)
-    })
-
-    return $.ajax({
-      url: Spree.pathFor('summary_adjustments')
-    }).done(function (data) {
-      return $('.tax-amount').html(data)
-    })
 
   }.bind(this)).fail(function (xhr) {
     var handler = xhr.responseJSON
-    this.couponCodeField.next().addClass('animated shake')
-    this.couponCodeField.addClass('alert-error animated shake')
-
+    this.couponCodeField.next().addClass('animated headShake')
+    this.couponCodeField.addClass('alert-error animated headShake')
     setTimeout(function(){
-
-        $('.animated').removeClass('alert-error animated shake');
+        $('.animated').removeClass('alert-error animated headShake');
     }, 2000);
 
   }.bind(this))
