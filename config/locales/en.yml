@@ -20,6 +20,7 @@ en:
     method: Method
     purchase: Pay now
     already_have_an_acount: Have an account?
+    free: FREE
     order_state:
       address: address
       cart: cart
