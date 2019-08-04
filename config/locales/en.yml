@@ -15,6 +15,7 @@ en:
     coupon_code_apply: <span class="medium_down_hide">Apply</span> <i class="hide fas fa-arrow-right medium_down_show_inline"></i>
     change: Change
     contact: Contact
+    save_my_address: Save this information for next time
     contact_information: Contact Information
     ship_to: Ship to
     method: Method
