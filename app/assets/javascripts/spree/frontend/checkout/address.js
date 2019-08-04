@@ -63,10 +63,15 @@ Spree.ready(function ($) {
           if (zipcodeRequired) {
             zipcodeInput.removeClass('hidden')
             zipcodeInput.addClass('required')
+            zipcodeInput.prop('required',true)
+            zipcodeInput.prop('disabled', false).show()
             zipcodePara.show()
+
           } else {
-            zipcodeInput.addClass('hidden')
+            zipcodeInput.val('')
+            zipcodeSpanRequired.hide()
             zipcodeInput.removeClass('required')
+            zipcodeInput.prop('required',false).hide()
             zipcodePara.hide()
           }
         }
@@ -82,7 +87,6 @@ Spree.ready(function ($) {
           var stateInput = statePara.find('input')
           var stateSpanRequired = statePara.find('[id$="state-required"]')
 
-          console.log(states);
           if (states.length > 0) {
             selected = parseInt(stateSelect.val())
             stateSelect.html('')
@@ -109,6 +113,7 @@ Spree.ready(function ($) {
             }
             stateSelect.removeClass('hidden')
             stateInput.removeClass('required')
+            stateSelect.prop('required',true)
           } else {
             stateSelect.hide().prop('disabled', true)
             stateInput.show()

@@ -75,6 +75,8 @@ h6 {
   font-weight: 600;
 }
 
+.hidden{display: none;}
+
 .summary-heading-1 {
   font-size: 18px;
   font-weight: 600;
@@ -884,16 +886,10 @@ div.checkbox {
             margin-top:20px;
             }
 
-            .with-state {
-              display: grid;
-              grid-template-columns:1fr;
-              grid-gap: 10px;
-            }
+            .address-third, .address-half {
 
-            .without-state {
-              display: grid;
-              grid-template-columns: 1fr;
-              grid-gap: 10px;
+              grid-template-columns: repeat(1, 1fr);
+
             }
 
             .badger-accordion__panel {

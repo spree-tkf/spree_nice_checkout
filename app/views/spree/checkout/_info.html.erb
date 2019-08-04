@@ -22,10 +22,12 @@
         <%= @order.shipping_address.company %>,
       <% end %>
         <%= @order.shipping_address.city %>,
-        <% if @order.shipping_address.state.present? %>
-          <%= @order.shipping_address.state %>,
-        <% end %>
+      <% if @order.shipping_address.state.present? %>
+        <%= @order.shipping_address.state %>,
+      <% end %>
+      <% if @order.shipping_address.zipcode.present? %>
         <%= @order.shipping_address.zipcode %>,
+      <% end %>
         <%= @order.shipping_address.country %>
     </div>
     <div class="link text-right">
@@ -58,10 +60,12 @@
         <%= @order.shipping_address.company %>,
       <% end %>
         <%= @order.shipping_address.city %>,
-        <% if @order.shipping_address.state.present? %>
-          <%= @order.shipping_address.state %>,
-        <% end %>
+      <% if @order.shipping_address.state.present? %>
+        <%= @order.shipping_address.state %>,
+      <% end %>
+      <% if @order.shipping_address.zipcode.present? %>
         <%= @order.shipping_address.zipcode %>,
+      <% end %>
         <%= @order.shipping_address.country %>
     </div>
     <div class="link text-right">

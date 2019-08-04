@@ -74,6 +74,7 @@
                            disabled: !have_states}) +
          form.text_field(:state_name,
                             class: !have_states ? 'form-control' : 'form-control hidden',
+                            placeholder: 'State' ,
                             required: !have_states,
                             disabled: have_states)
          ].join.gsub('"', "'").gsub("\n", "")
@@ -88,7 +89,7 @@
     <div class="has-float-label" id=<%="#{address_id}zipcode" %> <% if !address.country.zipcode_required %> style="display:none;"<% end %>>
       <%= form.text_field :zipcode, placeholder: "#{Spree.t(:zip)}", class: 'form-control', required: address.require_zipcode? %>
       <%= form.label :zipcode do %>
-        <span><%= Spree.t(:zip) %><% if address.require_zipcode? %><abbr class="required" title="required">*</abbr><% end %></span>
+        <span><%= Spree.t(:zip) %><abbr class="required" title="required">*</abbr></span>
       <% end %>
     </div>
     <noscript>
