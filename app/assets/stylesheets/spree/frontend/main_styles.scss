@@ -275,18 +275,6 @@ div#paypal_express_checkout p#powered_by_pp {
     }
 
 
-    .with-state {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px;
-    }
-
-    .without-state {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
-    }
-
     .line-items {
       display: grid;
       grid-template-columns: 3fr 1fr;
@@ -310,9 +298,22 @@ div#paypal_express_checkout p#powered_by_pp {
       .continue{}
     }
 
-    .address-full-width{
+    .address-full {
       grid-column: 1 / 3;
     }
+
+    .address-third {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+
+    .address-half{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+    }
+
 
     #discount-apply{
       padding: 20px 0 15px 0;
