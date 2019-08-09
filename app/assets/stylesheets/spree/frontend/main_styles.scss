@@ -82,6 +82,16 @@ h6 {
   font-weight: 600;
 }
 
+abbr.optional {
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 12px;
+}
+
+abbr.required {
+display: none !important;
+}
+
 #powered_by_pp{
   margin: 0;
 }
@@ -540,6 +550,11 @@ div#paypal_express_checkout p#powered_by_pp {
       border: 1px solid red;
     }
 
+
+
+
+//####### FORM STYLES
+//####### FORM STYLES
 //####### FORM STYLES
     /* Powered by: https://github.com/tonystar/float-label-css
      */
@@ -568,22 +583,6 @@ div#paypal_express_checkout p#powered_by_pp {
       }
     }
 
-    @mixin selector-has-float-label {
-      label {
-        position: absolute;
-        pointer-events: none;
-        cursor: text;
-        font-size: 100%;
-        opacity: 1;
-        transition: all 0.2s;
-        line-height: 1em;
-        left: 0;
-        top: 7px;
-        color: #717171;
-        font-weight: 200;
-        @content;
-      }
-    }
 
     @mixin float-label-input {
       &::placeholder {
@@ -595,6 +594,7 @@ div#paypal_express_checkout p#powered_by_pp {
         opacity: 0;
       }
     }
+
     @mixin float-label-scaled {
       &:placeholder-shown:not(:focus) + * {
         font-size: 100%;
@@ -613,7 +613,6 @@ div#paypal_express_checkout p#powered_by_pp {
       font-size: 20px;
       font-weight: 200;
 
-
       input {
         @include float-label-input;
         font-size: 20px;
@@ -622,34 +621,17 @@ div#paypal_express_checkout p#powered_by_pp {
           top: 0.73em;
           left: 0.5em;
         }
-
         &:focus {
           outline: none;
         }
       }
-      select {
-        font-size: 20px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        padding:15px 35px 3px 15px;
-      }
-
-    }
-
-
-    div.selector-has-float-label {
-      @include float-label-container;
-      @include selector-has-float-label;
-      font-size: 20px;
-      font-weight: 200;
 
       select {
         font-size: 20px;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        padding:15px 30px 3px 11px;
+        padding:15px 35px 3px 11px;
       }
 
     }
@@ -673,6 +655,9 @@ div#paypal_express_checkout p#powered_by_pp {
         box-shadow: 0 0 0 2px $link-color;
     }
 
+
+//####### CHECKBOX STYLES
+//####### CHECKBOX STYLES
 //####### CHECKBOX STYLES
 div.checkbox {
   display: flex;
@@ -753,6 +738,9 @@ div.checkbox {
 
 
 
+//####### RADIO BUTTON STYLES
+//####### RADIO BUTTON STYLES
+//####### RADIO BUTTON STYLES
 //####### RADIO BUTTON STYLES
     [type="radio"]:checked,
     [type="radio"]:not(:checked) {

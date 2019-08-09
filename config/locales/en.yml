@@ -21,6 +21,7 @@ en:
     method: Method
     purchase: Pay now
     already_have_an_acount: Have an account?
+    street_address_2: Apartment, suite, etc.
     free: FREE
     order_state:
       address: address

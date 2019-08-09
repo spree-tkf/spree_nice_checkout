@@ -69,18 +69,18 @@ Spree.ready(function($) {
         var zipcodeRequired = data.zipcode_required
         var zipcodePara = $('#' + region + 'zipcode')
         var zipcodeInput = zipcodePara.find('input')
-        var zipcodeSpanRequired = zipcodePara.find('abbr')
+        var zipcodeOptional = zipcodePara.find('abbr')
 
         if (zipcodeRequired) {
           zipcodeInput.prop('required', true)
-          zipcodeSpanRequired.show()
-          zipcodeInput.prop('disabled', false)
+          zipcodeOptional.removeClass('optional')
+          zipcodeOptional.addClass('required')
           zipcodePara.show()
         } else {
           zipcodeInput.val('')
           zipcodeInput.prop('required', false)
-          zipcodeSpanRequired.hide()
-          zipcodeInput.prop('disabled', true)
+          zipcodeOptional.removeClass('required')
+          zipcodeOptional.addClass('optional')
           zipcodePara.hide()
         }
       }
@@ -92,7 +92,7 @@ Spree.ready(function($) {
         var statePara = $('#' + region + 'state')
         var stateSelect = statePara.find('select')
         var stateInput = statePara.find('input')
-        var stateSpanRequired = statePara.find('abbr')
+        var stateOptional = statePara.find('abbr')
 
         if (states.length > 0) {
           selected = parseInt(stateSelect.val())
@@ -111,13 +111,16 @@ Spree.ready(function($) {
           stateSelect.prop('required', false)
           stateSelect.prop('disabled', false).show()
           stateInput.hide().prop('disabled', true)
+          stateInput.attr('placeholder', '')
           statePara.show()
-          stateSpanRequired.hide()
+          stateOptional.addClass('optional')
+          stateOptional.removeClass('required')
           stateSelect.removeClass('required')
 
           if (statesRequired) {
             stateSelect.addClass('required')
-            stateSpanRequired.show()
+            stateOptional.addClass('required')
+            stateOptional.removeClass('optional')
             stateSelect.prop('required', true)
           }
           stateSelect.removeClass('hidden')
@@ -126,11 +129,13 @@ Spree.ready(function($) {
           stateSelect.hide().prop('disabled', true)
           stateInput.show()
           if (statesRequired) {
-            stateSpanRequired.show()
+            stateOptional.addClass('required')
+            stateOptional.removeClass('optional')
             stateInput.addClass('required form-control')
           } else {
             stateInput.val('')
-            stateSpanRequired.hide()
+            stateOptional.addClass('optional')
+            stateOptional.removeClass('required')
             stateInput.removeClass('required')
           }
           statePara.toggle(!!statesRequired)
