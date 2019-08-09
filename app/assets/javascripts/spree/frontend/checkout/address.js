@@ -39,7 +39,7 @@ Spree.ready(function($) {
         var zipcodeRequired = data.zipcode_required
         var statesRequired = data.states_required
         var countrySelector = $('#' + region + 'country')
-        var feildsContainer = countrySelector.closest('#country_conatiner');
+        var feildsContainer = $('#' + region + 'country_container')
         var states = data.states
 
         if (states.length > 0) {

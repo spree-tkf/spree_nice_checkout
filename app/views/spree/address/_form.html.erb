@@ -45,7 +45,9 @@
     </div>
 
 <% have_states = !address.country.states.empty? %>
-<div id="country_conatiner" class="country_conatiner address-full
+<div id=<%="#{address_id}country_container" %>
+  class="
+  address-full
   <% if address.country.states_required && address.country.zipcode_required %>
   address-third
   <% elsif address.country.states_required %>
