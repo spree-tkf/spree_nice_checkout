@@ -92,9 +92,10 @@ abbr.required {
 display: none !important;
 }
 
-#powered_by_pp{
+#powered_by_pp {
   margin: 0;
 }
+
 div#paypal_express_checkout p#powered_by_pp {
   font-size: 15px;
   color: grey;
@@ -204,23 +205,6 @@ div#paypal_express_checkout p#powered_by_pp {
       margin: 15px 0 30px 0;
     }
 
-    .btn{
-      padding: 12px 5px;
-      font-weight: 500;
-    }
-
-    .checkout-button {
-      background-color: $button-color;
-      border-color: darken( $button-color, 10% );
-      font-size: 1.2em;
-      font-weight: 400;
-    }
-
-    .checkout-button:hover {
-      background-color: darken( $button-color, 10% );
-      border-color: darken( $button-color, 10% );
-    }
-
     div#checkout-footer {
       border-top: 1px solid $color-border;
       padding-top: 15px;
@@ -248,28 +232,11 @@ div#paypal_express_checkout p#powered_by_pp {
         margin: 0;
     }
 
-
     #coupon_status {
       font-size: 12px;
     }
 
-    img{max-width: 100%;}
-
-    .form-cont {
-      display: block;
-      width: 100%;
-      padding: 6px 12px;
-      font-size: 14px;
-      line-height: 1.428571429;
-      color: #555555;
-      background-color: #fff;
-      border-radius: $corner-radius;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      -webkit-transition:none;
-      -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    }
+    img{ max-width: 100%; }
 
     .grid {
       display: grid;
@@ -284,7 +251,6 @@ div#paypal_express_checkout p#powered_by_pp {
     ._fr2 {
       grid-column: 1 / 3;
     }
-
 
     .line-items {
       display: grid;
@@ -491,308 +457,8 @@ div#paypal_express_checkout p#powered_by_pp {
     }
 
 
-    /*================ Custom select style ================*/
-    select {
-      @include prefix(appearance, none, webkit moz spec);
-      background-position: right center;
-      background: {
-        image: asset-data-url('chevron-down');
-        repeat: no-repeat;
-        position: right 7.5px center;
-        size: 15px;
-      }
-      padding-right: 11px;
-      text-indent: 0.01px;
-      text-overflow: '';
-      color: #000;
-      cursor: pointer;
-      /*================ Hide the svg arrow in IE9 ================*/
-      .ie9 & {
-        padding-right: 10px;
-        background-image: none;
-      }
-    }
-
-    select::-ms-expand {
-      display: none;
-    }
-
-    /*================ Error styles ================*/
-    input,
-    select,
-    textarea {
-      &.input-error {
-        border-color: $color-error;
-        background-color: $color-error-bg;
-        color: $color-error;
-      }
-    }
-
-    .form-group {
-      margin: 0 0 5px;
-      position: relative;
-      display: block;
-    }
-
-    .panel-title {
-      margin-bottom: 5px;
-    }
-
-    span.selector-label {
-      position: absolute;
-      top: -0.5em;
-      left: 1em;
-      font-size: 65%;
-    }
-
-    span.field_with_errors {
-      display: block;
-      border: 1px solid red;
-    }
 
 
-
-
-//####### FORM STYLES
-//####### FORM STYLES
-//####### FORM STYLES
-    /* Powered by: https://github.com/tonystar/float-label-css
-     */
-    /* Re-usable mixins
-     * https://github.com/tonystar/float-label-css/blob/master/scss/_mixins.scss
-     */
-    @mixin float-label-container {
-      display: block;
-      position: relative;
-    }
-
-    @mixin div-float-label {
-      label {
-        position: absolute;
-        left: 1.2em;
-        top: 0.4em;
-        pointer-events: none;
-        cursor: text;
-        font-size: 55%;
-        opacity: 1;
-        transition: all 0.2s;
-        line-height: 1em;
-        color: #9b9b9b;
-        font-weight: 200;
-        @content;
-      }
-    }
-
-
-    @mixin float-label-input {
-      &::placeholder {
-        opacity: 1;
-        transition: all 0.2s;
-      }
-
-      &:placeholder-shown:not(:focus)::placeholder {
-        opacity: 0;
-      }
-    }
-
-    @mixin float-label-scaled {
-      &:placeholder-shown:not(:focus) + * {
-        font-size: 100%;
-        opacity: 0.5;
-        font-weight: inherit;
-        color: #717171;
-        @content;
-      }
-    }
-    /* Default styling
-     * https://github.com/tonystar/float-label-css/blob/master/scss/float-label.scss
-     */
-    div.has-float-label {
-      @include float-label-container;
-      @include div-float-label;
-      font-size: 20px;
-      font-weight: 200;
-
-      input {
-        @include float-label-input;
-        font-size: 20px;
-        width: 100%;
-        @include float-label-scaled {
-          top: 0.73em;
-          left: 0.5em;
-        }
-        &:focus {
-          outline: none;
-        }
-      }
-
-      select {
-        font-size: 20px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        padding:15px 35px 3px 11px;
-      }
-
-    }
-
-    input[type=number], input[type=text], input[type=password], input[type=email], input[type=tel] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      outline: none;
-      border-radius: $corner-radius;
-    }
-
-    input[type=number] {
-        -moz-appearance:textfield;
-    }
-
-    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=tel]:focus,  select:focus{
-        outline: none;
-        border-color: $link-color;
-        -webkit-box-shadow: 0 0 0 2px $link-color;
-        box-shadow: 0 0 0 2px $link-color;
-    }
-
-
-//####### CHECKBOX STYLES
-//####### CHECKBOX STYLES
-//####### CHECKBOX STYLES
-div.checkbox {
-  display: flex;
-  margin: 10px 0;
-}
-    .checkbox input[type="checkbox"] {
-        opacity: 0;
-        width:0;
-        height: auto;
-    }
-
-    .checkbox label {
-        position: relative;
-        display: inline-block;
-        font-size: 16px;
-        color:$grey;
-        /*16px width of fake checkbox + 6px distance between fake checkbox and text*/
-        padding-left: 30px;
-        &:hover{
-          text-decoration: underline;
-        }
-    }
-
-    .checkbox label::before,
-    .checkbox label::after {
-        position: absolute;
-        content: "";
-
-        /*Needed for the line-height to take effect*/
-        display: inline-block;
-    }
-
-    /*Outer box of the fake checkbox*/
-    .checkbox label::before{
-        height: 18px;
-        width: 18px;
-        border-radius: 3px;
-        border: 1px solid;
-        left: 0px;
-        color:$link-color;
-        /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
-         *to vertically center it.
-         */
-        top:0;
-    }
-
-    /*Checkmark of the fake checkbox*/
-    .checkbox label::after {
-        height: 7px;
-        width: 12px;
-        border-left: 2px solid;
-        border-bottom: 2px solid;
-        transform: rotate(-45deg);
-        left: 3px;
-        top: 4px;
-        color:$link-color;
-    }
-
-    /*Hide the checkmark by default*/
-    .checkbox input[type="checkbox"] + label::after {
-        content: none;
-    }
-
-    /*Unhide on the checked state*/
-    .checkbox input[type="checkbox"]:checked + label::after {
-        content: "";
-    }
-
-    /*Adding focus styles on the outer-box of the fake checkbox*/
-    .checkbox input[type="checkbox"]:focus + label::before {
-
-      outline: none;
-      border-color: $link-color;
-      -webkit-box-shadow: 0 0 0 1px $link-color;
-      box-shadow: 0 0 0 1px $link-color;
-    }
-
-
-
-
-//####### RADIO BUTTON STYLES
-//####### RADIO BUTTON STYLES
-//####### RADIO BUTTON STYLES
-//####### RADIO BUTTON STYLES
-    [type="radio"]:checked,
-    [type="radio"]:not(:checked) {
-        position: absolute;
-        left: -9999px;
-    }
-    [type="radio"]:checked + label,
-    [type="radio"]:not(:checked) + label
-    {
-        position: relative;
-        padding: 15px 0 15px 28px;
-        cursor: pointer;
-        line-height: 20px;
-        display: inline-block;
-        width: 100%;
-        color: #666;
-    }
-    [type="radio"]:checked + label:before,
-    [type="radio"]:not(:checked) + label:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 15px;
-        width: 20px;
-        height: 20px;
-        border: 1px solid #ddd;
-        border-radius: 100%;
-        background: #fff;
-    }
-    [type="radio"]:checked + label:after,
-    [type="radio"]:not(:checked) + label:after {
-        content: '';
-        width: 14px;
-        height: 14px;
-        background: #007aff;
-        position: absolute;
-        top: 18px;
-        left: 3px;
-        border-radius: 100%;
-        -webkit-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-    }
-    [type="radio"]:not(:checked) + label:after {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-    [type="radio"]:checked + label:after {
-        opacity: 1;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
 
     #coupon_box, #coupon_box_pay {
       width:77%;

@@ -92,6 +92,7 @@ Spree.ready(function($) {
         var statePara = $('#' + region + 'state')
         var stateSelect = statePara.find('select')
         var stateInput = statePara.find('input')
+        var stateLabel = statePara.find('label')
         var stateOptional = statePara.find('abbr')
 
         if (states.length > 0) {
@@ -112,6 +113,7 @@ Spree.ready(function($) {
           stateSelect.prop('disabled', false).show()
           stateInput.hide().prop('disabled', true)
           stateInput.attr('placeholder', '')
+          stateLabel.insertAfter(stateSelect)
           statePara.show()
           stateOptional.addClass('optional')
           stateOptional.removeClass('required')
@@ -140,6 +142,7 @@ Spree.ready(function($) {
           }
           statePara.toggle(!!statesRequired)
           stateInput.prop('disabled', !statesRequired)
+          stateLabel.insertAfter(stateInput)
           stateInput.removeClass('hidden')
           stateSelect.removeClass('required')
         }
