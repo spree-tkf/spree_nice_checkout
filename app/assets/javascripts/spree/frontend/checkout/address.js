@@ -143,6 +143,7 @@ Spree.ready(function($) {
           statePara.toggle(!!statesRequired)
           stateInput.prop('disabled', !statesRequired)
           stateLabel.insertAfter(stateInput)
+          stateInput.attr('placeholder', 'State')
           stateInput.removeClass('hidden')
           stateSelect.removeClass('required')
         }

@@ -48,12 +48,10 @@
       <% have_states = !address.country.states.empty? %>
       <div id=<%="#{address_id}country_container" %> class="address-full">
           <div class="has-float-label" id=<%="#{address_id}country" %>>
-             <span id=<%="#{address_id}country-selection" %>>
               <%= form.collection_select :country_id, available_countries, :id, :name, {}, {class: 'form-cont ', required: true } %>
-            </span>
-            <%= form.label :country_id do %>
-              <%= Spree.t(:country) %>
-            <% end %>
+              <%= form.label :country_id do %>
+                <%= Spree.t(:country) %>
+              <% end %>
           </div>
 
           <% if Spree::Config[:address_requires_state] %>

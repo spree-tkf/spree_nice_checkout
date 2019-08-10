@@ -70,22 +70,30 @@ h6 {
   margin: 10px 0;
 }
 
-.summary-heading-2 {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.hidden{display: none;}
-
 .summary-heading-1 {
   font-size: 18px;
   font-weight: 600;
 }
 
+.summary-heading-2 {
+  font-size: 16px;
+  font-weight:500;
+}
+
+.summary-heading-3 {
+  font-size: 16px;
+  font-weight:400;
+}
+
+.hidden{display: none;}
+
+
+
 abbr.optional {
   text-decoration: none;
   text-transform: lowercase;
-  font-size: 12px;
+  font-weight: 200;
+  color: $grey !important;
 }
 
 abbr.required {
@@ -169,6 +177,7 @@ div#paypal_express_checkout p#powered_by_pp {
 
     div.steps-container {
       margin-bottom: 15px;
+      font-size: 0.8em;
     }
 
     span.cart-progress a {
@@ -335,8 +344,6 @@ div#paypal_express_checkout p#powered_by_pp {
           padding: $colum-padding;
         }
 
-
-
         div#cart-line-items {
           display: grid;
           grid-template-columns: 90px 3fr 1fr;
@@ -393,7 +400,7 @@ div#paypal_express_checkout p#powered_by_pp {
 
     div#checkout-so-far {
       display: grid;
-      grid-template-columns: minmax(0px, 60px) minmax(0, auto) minmax(65px, 85px);
+      grid-template-columns: minmax(0px, 75px) minmax(0, auto) minmax(65px, 85px);
       align-items: center;
       border: 1px solid $color-border;
       border-radius: $corner-radius;

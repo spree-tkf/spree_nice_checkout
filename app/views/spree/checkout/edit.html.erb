@@ -2,7 +2,7 @@
 
 <div id="checkout-header">
   <div class="inner-section-left">
-    <div style='max-width:140px; margin: 0px auto 20px; text-align:center;'>
+    <div style='max-width:140px; margin: 0px auto 10px; text-align:center;'>
       <%= logo %>
     </div>
     <div id="checkout-progress" class="medium_down_hide" data-hook="checkout_header">
@@ -27,12 +27,12 @@
             <% if @order.state == 'address' || !@order.email? %>
               <% if spree_current_user %>
               <div>
-                <h4><%= Spree.t(:contact_information) %></h4>
+                <h3><%= Spree.t(:contact_information) %></h3>
                 <span class="grey"><%= @order.name %> (<%= @order.email%>) <%= link_to Spree.t(:logout), spree.logout_path %></span>
               </div>
               <% else %>
                 <div class="contact_login">
-                  <h4 class="_fr2"><%= Spree.t(:contact_information) %></h4>
+                  <h3 class="_fr2"><%= Spree.t(:contact_information) %></h3>
                   <span class="text-right grey" data-custom-open="modal-1"><span class="small_hide"><%= Spree.t(:already_have_an_acount) %> </span> <a href='#login-modal' rel='modal:open'><%= Spree.t(:login) %></a></span>
                 </div>
                 <div class="has-float-label">
