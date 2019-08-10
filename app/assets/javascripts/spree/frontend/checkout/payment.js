@@ -54,20 +54,4 @@ Spree.ready(function ($) {
     }
   }
   Spree.onPayment()
-
-  var activeItem = $('#payment-method-fields').find(':checked')
-  activeItem.closest('li').addClass('active_shipping_method')
-
-  $("#payment-method-fields li label").on('click', function(){
-    $('li').removeClass("active_shipping_method");
-    $(this).closest('li').toggleClass("active_shipping_method");
-  });
 })
-
-var activeItem = $('#payment_methods').find(':checked')
-activeItem.closest('li').addClass('active_shipping_method')
-
-$("#payment_methods li label").on('click', function(){
-  $('li').removeClass("active_shipping_method");
-  $(this).closest('li').toggleClass("active_shipping_method");
-});

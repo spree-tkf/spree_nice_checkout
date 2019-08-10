@@ -386,11 +386,6 @@ div#paypal_express_checkout p#powered_by_pp {
       padding: 0;
     }
 
-    label {
-      margin-bottom: 0;
-      font-weight: 400;
-    }
-
     .border-top {
       border-top: 1px solid $color-border;
     }
@@ -424,48 +419,6 @@ div#paypal_express_checkout p#powered_by_pp {
     div#checkout-so-far {
       margin-bottom: 25px;
     }
-
-    ul#payment-method-fields, ul#shipping_methods {
-            border: 1px solid $color-border;
-            border-radius: $corner-radius;
-          li {
-            cursor: pointer;
-            border-bottom: 1px solid $color-border;
-            padding-left: 15px;
-            margin: 0;
-          }
-
-
-          li.active_shipping_method {
-            background: $almost-white--background;
-            // box-shadow: inset 0 0 0 1px #007aff;
-
-            label{
-              color:black;
-            }
-          }
-
-          li:first-child {
-              border-top-left-radius: ($corner-radius - 1);
-              border-top-right-radius: ($corner-radius - 1);
-          }
-
-          li:last-child {
-            border-bottom-left-radius: ($corner-radius - 1);
-            border-bottom-right-radius: ($corner-radius - 1);
-            border-bottom: none !important;
-          }
-
-          li:nth-last-child(n+1) ~ li:last-child {
-              border-bottom: none !important;
-              border-bottom-left-radius: ($corner-radius - 1);
-              border-bottom-right-radius: ($corner-radius - 1);
-          }
-    }
-
-
-
-
 
     #coupon_box, #coupon_box_pay {
       width:77%;

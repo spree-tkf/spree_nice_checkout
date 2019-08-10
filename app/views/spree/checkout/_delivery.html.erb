@@ -4,19 +4,17 @@
      <%= form.fields_for :shipments do |ship_form| %>
        <div style="margin-bottom:25px;" class="shipment">
          <h3 class="stock-shipping-method-title"><%= Spree.t(:shipping_method) %></h3>
-         <ul id="shipping_methods" class="list-group shipping-methods text-left">
+         <div class="list-group">
            <% ship_form.object.shipping_rates.each do |rate| %>
             <% if rate.cost == 0 %>
                 <% shipping_price = 'FREE' %>
             <% else %>
               <% shipping_price = rate.display_cost %>
             <% end %>
-             <li class="list-group-item shipping-method">
                 <%= ship_form.radio_button :selected_shipping_rate_id, rate.id, data: { behavior: 'shipping-method-selector', cost: rate.display_cost } %>
                 <%= label_tag "order_shipments_attributes_0_" + :selected_shipping_rate_id.to_s + "_" + rate.id.to_s , rate.name + " — " + shipping_price.to_s %>
-             </li>
            <% end %>
-         </ul>
+         </div>
        </div>
      <% end %>
 
