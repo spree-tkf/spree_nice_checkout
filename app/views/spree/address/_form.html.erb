@@ -71,7 +71,7 @@
                ].join.gsub('"', "'").gsub("\n", "")
 
               %>
-              <%= form.label :state do %>
+              <%= form.label :state, {id: "#{address_id}state_label"} do %>
                 <%= Spree.t(:state) %>  <abbr class="required" title="optional"><%= Spree.t(:optional) %></abbr>
               <% end %>
             </div>
