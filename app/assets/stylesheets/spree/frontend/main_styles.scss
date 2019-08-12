@@ -70,10 +70,6 @@ h6 {
   margin: 10px 0;
 }
 
-#checkout-summary .badger-accordion__panel.-ba-is-hidden {
-  max-height: 100% !important;
-}
-
 
 .summary-heading-1 {
   font-size: 18px;
@@ -172,8 +168,8 @@ div#paypal_express_checkout p#powered_by_pp {
 
     }
     span.total-tax {
-      font-size: 0.85em;
-      color:#797979;
+      font-size: 0.7em;
+      color: $grey;
     }
 
     div#billing {
@@ -347,6 +343,16 @@ div#paypal_express_checkout p#powered_by_pp {
           background: $almost-white--background;
           background-color: $almost-white--background;
           padding: $colum-padding;
+
+
+          .badger-accordion__panel.-ba-is-hidden {
+            max-height: 100% !important;
+          }
+
+          .badger-accordion__panel:after {
+            display: none;
+          }
+
         }
 
         div#cart-line-items {
@@ -463,27 +469,6 @@ div#paypal_express_checkout p#powered_by_pp {
               display: inline-block !important;
             }
 
-            dt#accordion_show_hide{
-              display: grid;
-              max-width: 566px;
-              margin: auto;
-              height: 30px;
-              padding-left: 3px;
-              padding-right: 3px;
-            }
-
-            div#checkout-summary {
-              padding: 15px;
-              width:100%;
-              border-top: 1px solid $color-border;
-              border-bottom: 1px solid $color-border;
-              border-left: none;
-            }
-
-            div#checkout-summary-inner {
-              margin: 35px auto 0 auto;
-            }
-
             div#checkout {
               padding: 15px;
             }
@@ -496,7 +481,7 @@ div#paypal_express_checkout p#powered_by_pp {
             }
 
             span.total-tax{
-              font-size: 0.75em;
+              font-size: 0.6em;
             }
 
             div#checkout-header {
@@ -506,33 +491,6 @@ div#paypal_express_checkout p#powered_by_pp {
             .address-third, .address-half {
 
               grid-template-columns: repeat(1, 1fr);
-
-            }
-
-            .badger-accordion__panel {
-              max-height: 10000px;
-              overflow: hidden;
-              // scss-lint:disable ImportantRule
-              &.-ba-is-hidden {
-                  max-height: 0 !important;
-                  visibility: hidden;
-              }
-            }
-
-
-            .js-badger-accordion-header{
-              display: grid;
-              grid-template-columns: 3fr 1fr;
-              align-items: center;
-              color:$link-color;
-              padding: 5px 0;
-              text-align: left;
-
-              h4 {
-                font-weight: 300;
-                position: relative;
-
-              }
 
             }
 
@@ -548,11 +506,6 @@ div#paypal_express_checkout p#powered_by_pp {
               }
             }
 
-            .hide-summary {
-              display: none;
-            }
-
-
             .chevron:after {
               content: asset-data-url('chevron-down');
               display: inline-grid;
@@ -561,8 +514,66 @@ div#paypal_express_checkout p#powered_by_pp {
               transition: all ease-in-out 0.2s;
             }
 
-            #checkout-summary .badger-accordion__panel.-ba-is-hidden {
+
+
+          div#checkout-summary {
+
+            padding: 15px;
+            width:100%;
+            border-top: 1px solid $color-border;
+            border-bottom: 1px solid $color-border;
+            border-left: none;
+
+
+            dt#accordion_show_hide{
+              display: grid;
+              max-width: 566px;
+              margin: auto;
+              height: 30px;
+              padding-left: 3px;
+              padding-right: 3px;
+            }
+
+            div#checkout-summary-inner {
+              margin: 35px auto 0 auto;
+            }
+
+            .badger-accordion__panel:after {
+              display: none;
+            }
+
+            .hide-summary {
+              display: none;
+            }
+
+            .badger-accordion__panel.-ba-is-hidden {
               max-height: 0 !important;
+            }
+
+            .badger-accordion__panel {
+              max-height: 10000px;
+              overflow: hidden;
+              // scss-lint:disable ImportantRule
+              &.-ba-is-hidden {
+                  max-height: 0 !important;
+                  visibility: hidden;
+              }
+            }
+
+            .js-badger-accordion-header {
+              display: grid;
+              grid-template-columns: 3fr 1fr;
+              align-items: center;
+              color:$link-color;
+              padding: 5px 0;
+              text-align: left;
+
+              h4 {
+                font-weight: 300;
+                position: relative;
+
+              }
+
             }
 
             .-ba-is-active .chevron:after {
@@ -578,7 +589,6 @@ div#paypal_express_checkout p#powered_by_pp {
             .-ba-is-active .hide-summary {
               display: inline;
             }
-
 
             .badger-accordion--initialized .badger-accordion__panel {
               transition: all ease-in-out 0.3s;
@@ -608,6 +618,7 @@ div#paypal_express_checkout p#powered_by_pp {
               font-weight:bold;
 
             }
+          }
 
 
       }

@@ -1,6 +1,3 @@
-//= require spree/frontend/badger_accordion
-//= require spree/frontend/micromodal
-
 // ToDo -> Not best pleased with this hack for coupn code
 Spree.ready(function ($) {
   $('#coupon_code').submit(function (event) {
