@@ -70,6 +70,11 @@ h6 {
   margin: 10px 0;
 }
 
+#checkout-summary .badger-accordion__panel.-ba-is-hidden {
+  max-height: 100% !important;
+}
+
+
 .summary-heading-1 {
   font-size: 18px;
   font-weight: 600;
@@ -554,6 +559,10 @@ div#paypal_express_checkout p#powered_by_pp {
               width: 12px;
               margin-right:6px;
               transition: all ease-in-out 0.2s;
+            }
+
+            #checkout-summary .badger-accordion__panel.-ba-is-hidden {
+              max-height: 0 !important;
             }
 
             .-ba-is-active .chevron:after {
