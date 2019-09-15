@@ -12,7 +12,7 @@ module Spree
         next unless other_order_line_item.currency == order.currency
 
 
-        # This is a bodge to stop the merge orders happening.
+        # This is to stop the merge orders happening
         next unless other_order_line_item.currency != order.currency
 
         current_line_item = find_matching_line_item(other_order_line_item)
