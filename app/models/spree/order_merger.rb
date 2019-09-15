@@ -11,7 +11,6 @@ module Spree
       other_order.line_items.each do |other_order_line_item|
         next unless other_order_line_item.currency == order.currency
 
-
         # This is to stop the merge orders happening
         next unless other_order_line_item.currency != order.currency
 
