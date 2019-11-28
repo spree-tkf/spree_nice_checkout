@@ -1,4 +1,4 @@
-<div class="checkbox">
+<div hidden class="checkbox">
   <%= fields_for try_spree_current_user, url: update_marketing_preferences_path, method: :put, remote: true do |d| %>
     <%= d.check_box :accepts_marketing_emails %>
     <%= d.label :accepts_marketing_emails, Spree.t(:accepts_marketing_emails).html_safe %>
