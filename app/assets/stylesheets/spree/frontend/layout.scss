@@ -6,6 +6,18 @@ body#checkout-page {
         height: 100vh;
       }
 
+      ul#payment-methods {
+        li {
+          line-height: inherit;
+            margin-bottom: 0;
+          }
+
+          fieldset {
+            margin: 0;
+            padding:0;
+          }
+        }
+
       @media only screen and (min-width: 1000px) {
             div#content {
               display: grid;
