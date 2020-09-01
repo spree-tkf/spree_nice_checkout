@@ -49,6 +49,7 @@ Spree.ready(function ($) {
     }
 
     /* eslint-disable no-new */
+    if ($('#ccTypeDisplayCleaver').length) {
       new Cleave('.cardNumberCleaver', {
         creditCard: true,
         onCreditCardTypeChanged: function (type) {
@@ -66,7 +67,7 @@ Spree.ready(function ($) {
         numericOnly: true,
         blocks: [3]
       })
-
+    }
   }
   Spree.onPayment()
 })
