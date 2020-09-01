@@ -1,19 +1,43 @@
 
- <h2 style="margin:3px;"><i class="fab fa-cc-visa fa-lg"></i> <i class="fab fa-cc-mastercard fa-lg"></i></h2>
+ <h2 id="ccTypeDisplayCleaver" class="unknown" style="margin:3px;">
+  <i id="visa" class="fab fa-cc-visa fa-lg"></i>
+  <i id="mastercard" class="fab fa-cc-mastercard fa-lg"></i>
+  <i id="amex" class="fab fa-cc-amex fa-lg"></i>
+</h2>
 
  <% param_prefix = "payment_source[#{payment_method.id}]" %>
   <div class="form-group has-float-label">
-   <%= text_field_tag "#{param_prefix}[name]", "#{@order.bill_address_firstname} #{@order.bill_address_lastname}", { id: "name_on_card_#{payment_method.id}", placeholder: "#{Spree.t(:name_on_card)}", class: 'form-control required'} %>
+
+   <%= text_field_tag "#{param_prefix}[name]",
+        "#{@order.bill_address_firstname} #{@order.bill_address_lastname}",
+          { id: "name_on_card_#{payment_method.id}",
+            placeholder: "#{Spree.t(:name_on_card)}",
+            autocomplete: "cc-name",
+            class: 'form-control required',
+            required: true }
+         %>
+
     <%= label_tag "name_on_card_#{payment_method.id}" do %>
       <%= Spree.t(:name_on_card) %><abbr class="required" title="required">*</abbr>
     <% end %>
+
   </div>
   <div class="form-group has-float-label" data-hook="card_number">
-    <% options_hash = Rails.env.production? ? {autocomplete: 'off'} : {} %>
-    <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', placeholder: "#{Spree.t(:card_number)}", class: 'form-control required cardNumber', size: 19, maxlength: 19, autocomplete: "off") %>
+
+    <%= text_field_tag "#{param_prefix}[number]", '',
+        { id: 'card_number',
+          placeholder: "#{Spree.t(:card_number)}",
+          class: 'form-control required cardNumberCleaver',
+          size: 19,
+          maxlength: 19,
+          autocomplete: "cc-number",
+          required: true }
+        %>
+
     <%= label_tag "card_number" do %>
       <%= Spree.t(:card_number) %><abbr class="required" title="required">*</abbr>
     <% end %>
+
     <span id="card_type" style="display:none;">
       ( <span id="looks_like" ><%= Spree.t(:card_type_is) %> <span id="type"></span></span>
         <span id="unrecognized"><%= Spree.t(:unrecognized_card_type) %></span>
@@ -23,19 +47,39 @@
   <div class="row" style="height: auto;">
     <div class="col-6 pl-0" data-hook="card_expiration">
      <div class="form-group has-float-label">
-     <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', placeholder: "#{Spree.t(:expiration)}", class: "form-control required cardExpiry", placeholder: "MM / YY" %>
-      <%= label_tag "card_expiry" do %>
-        <%= Spree.t(:expiration) %><abbr class="required" title="required">*</abbr>
-      <% end %>
+
+       <%= text_field_tag "#{param_prefix}[expiry]", '',
+            id: 'card_expiry',
+            placeholder: "#{Spree.t(:expiration)}",
+            class: "form-control required cardExpiryCleaver",
+            autocomplete: "cc-exp",
+            placeholder: "MM / YYYY", required: true
+          %>
+
+        <%= label_tag "card_expiry" do %>
+          <%= Spree.t(:expiration) %><abbr class="required" title="required">*</abbr>
+        <% end %>
+
       </div>
     </div>
     <div class="col-6 pr-0" data-hook="card_code">
      <div class="form-group has-float-label">
-      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', placeholder: "#{Spree.t(:card_code)}", class: ' required cardCode', size: 5) %>
-      <%= label_tag "card_code" do %>
-        <%= Spree.t(:card_code) %><abbr class="required" title="required">*</abbr>
-      <% end %>
-     </div>
-     </div>
+
+        <%= text_field_tag "#{param_prefix}[verification_value]", '',
+            { id: 'card_code',
+              placeholder: "#{Spree.t(:card_code)}",
+              class: ' required cardCodeCleaver',
+              autocomplete: "cc-csc",
+              size: 2,
+              required: true }
+            %>
+
+        <%= label_tag "card_code" do %>
+          <%= Spree.t(:card_code) %><abbr class="required" title="required">*</abbr>
+        <% end %>
+
+      </div>
     </div>
-  <%= hidden_field_tag "#{param_prefix}[cc_type]", '', id: "cc_type", class: 'ccType' %>
+  </div>
+
+  <%= hidden_field_tag "#{param_prefix}[cc_type]", '', id: "cc_type", class: 'ccTypeCleaver' %>

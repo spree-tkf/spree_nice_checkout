@@ -4,6 +4,7 @@ en:
     remove_promotion: '<i class="far fa-trash"></i>'
     continue_to_delivery: Continue to delivery
     continue_to_summary: Continue to summary
+    choose_a_paymeny_method: Choose A Payment Method
     return_to_cart: Return to cart
     return_to_address: Return to address
     return_to_delivery: Return to delivery

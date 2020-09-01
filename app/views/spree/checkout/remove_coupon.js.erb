@@ -3,7 +3,7 @@ $(".summary_adjustments")
   .html(
     "<%= j render partial: 'summary_adjustments', locals: { order: current_order } %>"
   )
-  .fadeIn("slow");
+.fadeIn("slow");
 
 $("#coupon_box")
   .parent()
@@ -12,4 +12,4 @@ $("#coupon_box")
   .delay("2000")
   .fadeOut("slow", function() {
     $(this).remove();
-  });
+});

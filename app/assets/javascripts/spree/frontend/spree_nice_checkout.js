@@ -1,4 +1,4 @@
-// ToDo -> Not best pleased with this hack for coupn code
+// ToDo -> Not best pleased with this hack for coupon code
 Spree.ready(function ($) {
   $('#coupon_code').submit(function (event) {
     var input = {

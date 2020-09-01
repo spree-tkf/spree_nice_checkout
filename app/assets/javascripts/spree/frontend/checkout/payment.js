@@ -1,4 +1,5 @@
 //= require spree/frontend/coupon_manager
+
 Spree.ready(function ($) {
   Spree.onPayment = function () {
     if ($('#checkout_form_payment').length) {
@@ -28,12 +29,6 @@ Spree.ready(function ($) {
           $('#payment_method_' + this.value).show()
         }
       })
-      $(document).on('click', '#cvv_link', function (event) {
-        var windowName = 'cvv_info'
-        var windowOptions = 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0,scrollbars=1'
-        window.open($(this).attr('href'), windowName, windowOptions)
-        event.preventDefault()
-      })
       $('input[type="radio"]:checked').click()
       $('#checkout_form_payment').submit(function (event) {
         var input = {
@@ -52,6 +47,26 @@ Spree.ready(function ($) {
         }
       })
     }
+
+    /* eslint-disable no-new */
+      new Cleave('.cardNumberCleaver', {
+        creditCard: true,
+        onCreditCardTypeChanged: function (type) {
+          $('.ccTypeCleaver').val(type)
+          $('#ccTypeDisplayCleaver').removeClass().addClass(type)
+        }
+      })
+      /* eslint-disable no-new */
+      new Cleave('.cardExpiryCleaver', {
+        date: true,
+        datePattern: ['m', 'Y']
+      })
+      /* eslint-disable no-new */
+      new Cleave('.cardCodeCleaver', {
+        numericOnly: true,
+        blocks: [3]
+      })
+
   }
   Spree.onPayment()
 })
