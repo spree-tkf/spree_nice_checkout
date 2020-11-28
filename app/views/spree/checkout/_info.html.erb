@@ -47,6 +47,36 @@
     <div class="link text-right">
       <%= link_to Spree.t(:change), spree.checkout_state_path('address') %>
     </div>
+
+    <!-- Bill To -->
+    <% unless @order.bill_address == @order.ship_address %>
+      <span class="fw border-top"></span>
+      <div class="tag grey">
+        <%= Spree.t(:bill_to) %>
+      </div>
+      <div class="info ">
+        <%= @order.billing_address.address1 %>,
+        <% if @order.billing_address.address2.present? %>
+          <%= @order.billing_address.address2 %>,
+        <% end %>
+        <% if @order.billing_address.company.present? %>
+          <%= @order.billing_address.company %>,
+        <% end %>
+          <%= @order.billing_address.city %>,
+        <% if @order.billing_address.state.present? %>
+          <%= @order.billing_address.state %>,
+        <% end %>
+        <% if @order.billing_address.zipcode.present? %>
+          <%= @order.billing_address.zipcode %>,
+        <% end %>
+          <%= @order.billing_address.country %>
+      </div>
+      <div class="link text-right">
+        <%= link_to Spree.t(:change), spree.checkout_state_path('address') %>
+      </div>
+    <% end %>
+
+    <!-- Ship To -->
     <span class="fw border-top"></span>
     <div class="tag grey">
       <%= Spree.t(:ship_to) %>
